@@ -18,4 +18,3 @@ matches.forEach((m, i) => {
   console.log(`Length: ${content.length} chars`);
   fs.writeFileSync(path.join(__dirname, `section-${i + 1}.html`), content);
 });
-

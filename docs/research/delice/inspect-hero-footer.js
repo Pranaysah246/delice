@@ -16,4 +16,3 @@ if (footerMatch) {
   console.log("\n=== FOOTER SECTION ===");
   console.log(footerMatch[0].slice(0, 1500));
 }
-
