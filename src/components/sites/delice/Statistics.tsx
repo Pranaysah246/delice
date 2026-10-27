@@ -89,3 +89,4 @@ export function Statistics() {
     </section>
   );
 }
+

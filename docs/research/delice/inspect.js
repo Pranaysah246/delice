@@ -37,3 +37,4 @@ const videos = [...html.matchAll(/<video[^>]*>.*?<\/video>/gis)];
 console.log("\n=== VIDEOS ===");
 console.log("Video count:", videos.length);
 videos.forEach(v => console.log(v[0].slice(0, 300)));
+

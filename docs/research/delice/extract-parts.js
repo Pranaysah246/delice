@@ -22,3 +22,4 @@ fs.writeFileSync(path.join(__dirname, "extracted-footer.html"), parts.footer);
 console.log("Header length:", parts.header.length);
 console.log("Main length:", parts.main.length);
 console.log("Footer length:", parts.footer.length);
+
