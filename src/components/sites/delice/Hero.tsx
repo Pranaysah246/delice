@@ -2,8 +2,11 @@
 
 import React from "react";
 import Image from "next/image";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section className="relative w-full bg-[#de2b2b] text-[#f8efdc] overflow-hidden pt-8 md:pt-16 pb-12 md:pb-24">
       <div className="max-w-[120rem] mx-auto px-4 md:px-8">
@@ -14,7 +17,7 @@ export function Hero() {
             <div className="w-full max-w-[528px] mb-6">
               <Image
                 src="/sites/delice/assets/hero-tagline.svg"
-                alt="Le restaurant lounge par excellence"
+                alt={t("Le restaurant lounge par excellence", "The ultimate resto-lounge experience")}
                 width={528}
                 height={312}
                 className="w-full h-auto object-contain"
@@ -23,11 +26,13 @@ export function Hero() {
             </div>
 
             <h1 className="text-xs md:text-sm uppercase tracking-widest font-semibold text-[#f8efdc]/90 mb-2">
-              Pizza Délice depuis 1970
+              {t("Pizza Délice depuis 1970", "Pizza Délice Since 1970")}
             </h1>
             <p className="font-filson text-base md:text-lg text-[#f8efdc]/80 max-w-[48ch] leading-relaxed">
-              Au cœur de Lévis, alliant chaleur, grandeur et convivialité dans une
-              ambiance vibrante et accueillante.
+              {t(
+                "Au cœur de Lévis, alliant chaleur, grandeur et convivialité dans une ambiance vibrante et accueillante.",
+                "In the heart of Lévis, blending warmth, grandeur, and conviviality in a vibrant and welcoming atmosphere."
+              )}
             </p>
           </div>
 

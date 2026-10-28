@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
 export const metadata: Metadata = {
   title: "Accueil - Délice | Resto Lounge à Lévis",
@@ -18,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="fr" className="h-full antialiased scroll-smooth">
       <body className="min-h-full flex flex-col font-filson bg-[#f8efdc] text-[#273e2a]">
-        {children}
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );

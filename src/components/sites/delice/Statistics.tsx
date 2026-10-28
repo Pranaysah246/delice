@@ -2,20 +2,24 @@
 
 import React from "react";
 import Image from "next/image";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface StatItem {
   number: string;
-  label: string;
+  labelFr: string;
+  labelEn: string;
 }
 
 const STATS: StatItem[] = [
-  { number: "160", label: "Passionnés dans l’équipe" },
-  { number: "1970", label: "Année de fondation" },
-  { number: "700", label: "Places en intérieur" },
-  { number: "300", label: "Places en terrasse" },
+  { number: "160", labelFr: "Passionnés dans l’équipe", labelEn: "Passionate team members" },
+  { number: "1970", labelFr: "Année de fondation", labelEn: "Year of foundation" },
+  { number: "500", labelFr: "Places en intérieur", labelEn: "Indoor dining seats" },
+  { number: "300", labelFr: "Places en terrasse", labelEn: "Rooftop terrace seats" },
 ];
 
 export function Statistics() {
+  const { language, t } = useLanguage();
+
   return (
     <section className="relative w-full bg-[#f8efdc] text-[#de2b2b] overflow-hidden py-16 md:py-28">
       {/* Wave shape decoration */}
@@ -33,10 +37,13 @@ export function Statistics() {
         {/* Section Heading */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-xs uppercase tracking-widest font-semibold text-[#7c2627] mb-2 block">
-            Notre histoire
+            {t("Notre histoire", "Our Story")}
           </span>
           <h2 className="font-ivy text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight text-[#de2b2b]">
-            Plus de 50 ans de passion et de fête
+            {t(
+              "Plus de 50 ans de passion et de fête",
+              "Over 50 Years of Passion & Festivity"
+            )}
           </h2>
         </div>
 
@@ -60,13 +67,13 @@ export function Statistics() {
             {STATS.map((stat, idx) => (
               <div
                 key={idx}
-                className="bg-[#de2b2b] text-[#f8efdc] rounded-full aspect-square flex flex-col items-center justify-center p-4 text-center shadow-lg transform hover:-translate-y-1 transition-transform"
+                className="flex flex-col items-center justify-center p-6 sm:p-8 rounded-3xl bg-white/60 border border-[#de2b2b]/20 shadow-sm hover:shadow-md transition-shadow text-center"
               >
-                <span className="font-ivy text-3xl sm:text-4xl lg:text-5xl font-bold leading-none mb-2">
+                <span className="font-ivy text-4xl sm:text-5xl lg:text-6xl font-bold text-[#de2b2b] mb-2">
                   {stat.number}
                 </span>
-                <span className="font-filson text-xs sm:text-sm font-medium tracking-wide max-w-[14ch] leading-tight text-[#f8efdc]/90">
-                  {stat.label}
+                <span className="font-filson text-xs sm:text-sm font-semibold uppercase tracking-wider text-[#7c2627]">
+                  {language === "en" ? stat.labelEn : stat.labelFr}
                 </span>
               </div>
             ))}
@@ -74,10 +81,10 @@ export function Statistics() {
 
           {/* Right Media Card */}
           <div className="md:col-span-3">
-            <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-xl border-4 border-[#de2b2b]/10">
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-xl border-4 border-[#de2b2b]/10">
               <Image
                 src="/sites/delice/assets/dscf5821-2560x3413.jpg"
-                alt="Soirée festive au Délice"
+                alt="Équipe Délice Resto Lounge"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 25vw"
